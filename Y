@@ -1,0 +1,24 @@
+name: Unzip and Build
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Unzip EncosianOS_with_site.zip
+        run: |
+          unzip -o EncosianOS_with_site.zip -d ./unzipped
+
+      - name: List unzipped files
+        run: |
+          ls -R ./unzipped
+
+      # If you want to run a script after unzipping, add it here:
+      # - name: Run a build script
+      #   run: |
+      #     bash ./unzipped/build.sh
